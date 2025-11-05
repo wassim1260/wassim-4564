@@ -149,10 +149,19 @@
 
     function handleSubmit(e){
       e.preventDefault();
+      const form = e.target;
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
-      alert('Thanks, ' + (name || 'friend') + '! Your message has been received.');
-      e.target.reset();
+  
+      const confirmation = document.createElement('p');
+      confirmation.textContent = 'Thanks, ' + (name || 'friend') + '! Your message has been received.';
+      confirmation.style.marginTop = '10px';
+      confirmation.style.color = 'green';
+      form.parentNode.appendChild(confirmation);
+
+      form.reset();
+  
+      setTimeout(() => confirmation.remove(), 5000);
     }
   </script>
 </body>
