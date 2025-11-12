@@ -15,7 +15,7 @@
             padding: 0;
         }
 
-        /* * C'est ici que nous répondons à votre demande de style :
+    
          * Nous ciblons l'élément avec la classe "titre-style"
         */
         .titre-style {
