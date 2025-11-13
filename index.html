@@ -1,12 +1,168 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Premier Projet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive HTML Template</title>
+  <meta name="description" content="A clean, responsive HTML template with header, hero, cards and footer." />
+
+  <style>
+    /* Simple, self-contained CSS for the template */
+    :root{
+      --accent: #3366ff;
+      --muted: #6b7280;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --radius: 12px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:#0f172a}
+
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#22c1c3);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:18px;text-decoration:none;color:inherit;font-weight:600}
+
+    .hero{background:linear-gradient(180deg, rgba(51,102,255,0.08), transparent);border-radius:var(--radius);padding:32px;margin:20px 0;display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:center}
+    .hero h1{margin:0 0 10px 0;font-size:28px}
+    .hero p{margin:0;color:var(--muted)}
+    .cta{margin-top:16px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:white;text-decoration:none;font-weight:700}
+    .btn.ghost{background:transparent;color:var(--accent);border:2px solid rgba(51,102,255,0.12)}
+
+    .stats{display:flex;gap:14px;margin-top:18px}
+    .stat{background:var(--card);padding:12px;border-radius:10px;min-width:100px;text-align:center;box-shadow:0 6px 18px rgba(16,24,40,0.04)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,0.04)}
+    .card h3{margin:0 0 8px 0}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    footer{margin-top:40px;padding-top:24px;border-top:1px solid rgba(15,23,42,0.04);display:flex;justify-content:space-between;align-items:center}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .cards{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:600px){
+      header{flex-direction:column;align-items:flex-start}
+      nav a{margin-left:10px}
+      .cards{grid-template-columns:1fr}
+      .logo{width:40px;height:40px}
+    }
+
+    /* Small utilities */
+    .muted{color:var(--muted)}
+    input,textarea{font-family:inherit;padding:10px;border-radius:8px;border:1px solid #e6edf3}
+    form{display:flex;flex-direction:column;gap:10px}
+  </style>
 </head>
 <body>
-    <h1>Bonjour le monde !</h1>
-    <p>Ceci est mon premier projet sur GitHub.</p>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">RT</div>
+        <div>
+          <div style="font-weight:800">SiteName</div>
+          <div style="font-size:12px;color:var(--muted)">Clean responsive template</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" role="region" aria-label="Intro">
+        <div>
+          <h1>Modern, responsive HTML template — ready to customize</h1>
+          <p>Use this starter template for small projects, landing pages or prototypes. It includes a header, hero, cards, and a contact form. No external CSS required.</p>
+
+          <div class="cta">
+            <a class="btn" href="#contact">Get started</a>
+            <a class="btn ghost" href="#features" style="margin-left:12px">Learn more</a>
+          </div>
+
+          <div class="stats" aria-hidden="true">
+            <div class="stat"><div style="font-weight:800">1.2k</div><div class="muted">Users</div></div>
+            <div class="stat"><div style="font-weight:800">98%</div><div class="muted">Satisfaction</div></div>
+          </div>
+        </div>
+
+        <aside style="background:linear-gradient(180deg,#fff,#f6fbff);padding:18px;border-radius:10px;box-shadow:0 10px 30px rgba(16,24,40,0.06)">
+          <h3 style="margin-top:0">Quick contact</h3>
+          <form id="contact" action="#" onsubmit="handleSubmit(event)">
+            <label for="name" class="muted" style="font-size:13px">Name</label>
+            <input id="name" name="name" required placeholder="Your name" />
+
+            <label for="email" class="muted" style="font-size:13px">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com" />
+
+            <label for="message" class="muted" style="font-size:13px">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="How can we help?"></textarea>
+
+            <button class="btn" type="submit">Send</button>
+          <div id="contact-feedback" class="muted" aria-live="polite" style="min-height:1em;margin-top:8px"></div>
+          <button class="btn" type="submit">Send</button>
+        </aside>
+      </section>
+
+      <section id="features">
+        <div class="cards">
+          <article class="card">
+            <h3>Fast setup</h3>
+            <p>Copy the file and start editing — no build tools required. Clean structure and accessible markup.</p>
+          </article>
+
+          <article class="card">
+            <h3>Responsive</h3>
+            <p>Grid-based layout adapts for phones, tablets and desktop screens without extra libraries.</p>
+          </article>
+
+          <article class="card">
+            <h3>Accessible</h3>
+            <p>Keyboard-friendly forms, semantic landmarks, and clear focusable controls.</p>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>
+        <strong>SiteName</strong>
+        <div class="muted" style="font-size:13px">Made with care • © <span id="year"></span></div>
+      </div>
+      <div class="muted">Designed — Simple template</div>
+    </footer>
+  </div>
+
+  <script>
+    // Small interactive bits
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function handleSubmit(e){
+      e.preventDefault();
+      const form = e.target;
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+  
+      const confirmation = document.createElement('p');
+      confirmation.textContent = 'Thanks, ' + (name || 'friend') + '! Your message has been received.';
+      confirmation.style.marginTop = '10px';
+      confirmation.style.color = 'green';
+      form.parentNode.appendChild(confirmation);
+
+      form.reset();
+  
+      setTimeout(() => confirmation.remove(), 5000);
+    }
+  </script>
 </body>
 </html>
